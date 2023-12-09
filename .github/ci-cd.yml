@@ -1,0 +1,28 @@
+name: Naive Bayes CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Choose your Python version
+
+      - name: Install dependencies
+        run: pip install scikit-learn
+
+      - name: Run tests
+        run: python naive_bayes_classifier.py # Replace with your file name
